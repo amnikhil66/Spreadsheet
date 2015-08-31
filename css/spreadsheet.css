@@ -1,0 +1,156 @@
+#spreadsheet {
+    font-family: 'Droid Sans', sans-serif;
+    color: #555;
+    position: relative;
+}
+
+#spreadsheet table{
+    clear: both;
+    border-collapse: collapse;
+}
+
+#spreadsheet tr {
+    line-height: 5px;
+}
+
+#spreadsheet th,
+#spreadsheet td {
+    border: 1px solid #bbb;
+}
+
+#spreadsheet td::after {
+    content: '';
+    font-weight: bold;
+    font-size: 16px;
+    color: #07afff;
+    padding: 0 5px;
+}
+
+#spreadsheet td.edit::after {
+    content: '\2716';
+    cursor: pointer;
+}
+
+#spreadsheet td:not(.edit):hover::after {
+    content: '\270E';
+    cursor: pointer;
+}
+
+#spreadsheet tr::before {
+    display: table-cell;
+    border: 1px solid #bbb;
+    padding: 10px;
+}
+
+#spreadsheet thead tr::before {
+    content: " "
+}
+
+#spreadsheet tbody tr::before {
+    content: attr(data-idx);
+}
+
+#spreadsheet tbody input,
+#spreadsheet tbody input[disabled] {
+    background: transparent;
+    height: 100%;
+    border: none;
+    padding: 0;
+}
+
+#spreadsheet tbody input:focus {
+    box-shadow: 1px 1px #07afff;
+}
+
+#spreadsheet button {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: #07afff;
+    color: #eee;
+    box-shadow: none;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#spreadsheet .button-container {
+    float: left;
+}
+
+#spreadsheet button:hover,
+#spreadsheet button:focus {
+    background-color: #07afcc;
+}
+
+#spreadsheet button:hover::before,
+#spreadsheet button:focus::before {
+    content: '+';
+}
+
+#spreadsheet button:hover span,
+#spreadsheet button:focus span {
+    display: none;
+}
+
+#spreadsheet th::after {
+    color: #aaa;
+    position: relative;
+    font-size: 10px;
+    text-align: center;
+    right: -15px;
+}
+
+#spreadsheet th.ascending::after {
+    content: '\25B2';
+    top: -5px;
+}
+
+#spreadsheet th.descending::after {
+    content: '\25BC';
+    top: 0px;
+}
+
+
+#spreadsheet .save-message {
+    visibility: hidden;
+    position: absolute;
+    top: -30px;
+    left: 45%;
+    width: 200px;
+    height: 50px;
+    background-color: green;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#spreadsheet .save-message.saved {
+    -webkit-animation: message 1s linear;
+    animation: message 1s linear;
+}
+
+@-webkit-keyframes message {
+    0% {
+        visibility: visible;
+    }
+    99% {
+        height: 0px;
+    }
+    100% {
+        visibility: hidden;
+    }
+}
+
+@keyframes message {
+    0% {
+        visibility: visible;
+    }
+    99% {
+        height: 0px;
+    }
+    100% {
+        visibility: hidden;
+    }
+}
